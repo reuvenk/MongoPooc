@@ -2,7 +2,7 @@
 {
     public interface IMongoRepository
     {
-        public abstract string ModelName { get; }
-        public void RegisterClassMapAndInit(MongoConnector mongoConnector);
+        abstract string ModelName { get; }
+        void RegisterClassMapAndInit(MongoConnector mongoConnector);
     }
 }
