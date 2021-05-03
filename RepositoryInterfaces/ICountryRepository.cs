@@ -7,6 +7,7 @@ namespace MongoPocWebApplication1.Repository
 {
     public interface ICountryRepository : IMongoRepository
     {
+        //Is Add async?
         Task<Country> AddAsync(Country country);
         Task<Country> GetByIdAsync(String id);
     }

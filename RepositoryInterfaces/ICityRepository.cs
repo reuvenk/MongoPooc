@@ -7,7 +7,10 @@ namespace MongoPocWebApplication1.Repository
 {
     public interface ICityRepository : IMongoRepository
     {
+        //TODO: what is the purpose?
         const string Name = "" ;
+
+        //Is Add Async in Mongo?
         Task<City> AddAsync(City city);
         Task<City> GetByNameAsync(string name);
     }

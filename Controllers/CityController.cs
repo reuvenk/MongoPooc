@@ -16,25 +16,23 @@ namespace MongoPocWebApplication1.Controllers
     {
         private readonly ILogger<CityController> logger;
         private readonly ICityRepository cityRepository;
-        private string CityModelName { get; } = "City";
 
-
-        public CityController(ILogger<CityController> logger, IEnumerable<IMongoRepository> mongoRepositories)
+        public CityController(ILogger<CityController> logger, ICityRepository cityRepository)
         {
             this.logger = logger;
-            this.cityRepository = (ICityRepository)mongoRepositories.SingleOrDefault(r => r.ModelName.Equals(CityModelName));
+            this.cityRepository = cityRepository;
         }
 
         [HttpGet("{name}")]
         public async Task<ActionResult<City>> Get(string name)
         {
-            return await cityRepository.FindByName(name);
+            return await cityRepository.GetByNameAsync(name);
         }
 
         [HttpPost]
         public async Task<ActionResult<City>> Post(City city)
         {
-            return await cityRepository.Insert(city);
+            return await cityRepository.AddAsync(city);
         }
     }
 }

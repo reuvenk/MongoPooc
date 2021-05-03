@@ -16,11 +16,11 @@ namespace MongoPocWebApplication1.Controllers
     {
         private readonly ILogger<CountryController> logger;
         private readonly ICountryRepository countryRepository;
-        private string CountryModelName { get; } = "Country";
 
-        public CountryController(ILogger<CountryController> logger, IEnumerable<IMongoRepository> mongoRepositories)
+        public CountryController(ILogger<CountryController> logger, ICountryRepository countryRepository)
         {
-            this.logger = logger; this.countryRepository = (ICountryRepository)mongoRepositories.SingleOrDefault(r=>r.ModelName.Equals(CountryModelName));
+            this.logger = logger;
+            this.countryRepository = countryRepository;
         }
 
         [HttpGet("{id}")]

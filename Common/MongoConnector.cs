@@ -29,18 +29,23 @@ namespace MongoPocWebApplication1.Common
 
         private readonly ILogger<MongoConnector> logger;
 
-        public MongoConnector(IEnumerable<IMongoRepository> mongoRepositories, IConfiguration configuration, ILogger<MongoConnector> logger)
+        //TODO: Pass MongoConfig
+        public MongoConnector(IMongoConfiguratio configuration, ILogger<MongoConnector> logger)
         {
             this.logger = logger;
             this.mongoRepositories = mongoRepositories;
             logger.LogInformation("-->MongoConnector");
+
+            //TODO: Pass connection in ctor
             var connectionString = BuildConnectionString(configuration);
             logger.LogDebug($" Creating Mongo Client for connection string: {connectionString}");
             Client = new MongoClient(connectionString);
 
-            var dbInstanceName = BuildInstanceName(configuration);
-            
+
             UpdateDomainName(configuration);
+
+            //TODO: Pass db name in the constructor as string or pass MongoDbOptions{coonnesctionString, Team, UserName, Domain, Environment?}
+            var dbInstanceName = BuildInstanceName(configuration);
 
             //used for POC testing!!!
             logger.LogInformation($" Drop old DB Instance {dbInstanceName}");
@@ -89,10 +94,10 @@ namespace MongoPocWebApplication1.Common
             DomainName = mongoInstance.Domain;
         }
 
-        public IMongoCollection<TDocument> GetCollection<TDocument>(IMongoRepository mongoRepository, MongoCollectionSettings settings = null)
+        public IMongoCollection<TDocument> GetCollection<TDocument>(string collectionName, MongoCollectionSettings settings = null)
         {
-            logger.LogDebug($"-->GetCollection {mongoRepository.ModelName}");
-            var mongoCollection = this.Database.GetCollection<TDocument>($"{DomainName}_{mongoRepository.ModelName}", settings);
+            logger.LogDebug($"-->GetCollection {collectionName}");
+            var mongoCollection = this.Database.GetCollection<TDocument>($"{DomainName}_{collectionName}", settings);
             logger.LogDebug("<--GetCollection");
             return mongoCollection;
         }

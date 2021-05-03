@@ -20,7 +20,10 @@ namespace MongoPocWebApplication1.Repository
             //Register ClassMap...
             BsonClassMap.RegisterClassMap<City>(cm =>
             {
-                cm.AutoMap();
+                //TODO: Set collection name
+                //cm.SetCollectionName("city")
+
+
                 cm.SetIgnoreExtraElements(true);
                 cm.SetIsRootClass(true);
                 cm.GetMemberMap(c => c.Id).SetElementName("_id");
@@ -30,10 +33,10 @@ namespace MongoPocWebApplication1.Repository
             });
 
             //init
-            CityCollection = mongoConnector.GetCollection<City>(this);
+            CityCollection = mongoConnector.GetCollection<City>("city", this);
         }
 
-        public CityRepository(ILogger<CityRepository> logger)
+        public CityRepository(ILogger<CityRepository> logger, MongoConnector mongoConnector)
         {
             this.logger = logger;
         }

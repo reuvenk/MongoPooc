@@ -5,6 +5,7 @@
         public string Id { get; set; }
         public string Name { get; set; }
 
+        //Is empty ctor required for mongo?
         public Country()
         {
         }

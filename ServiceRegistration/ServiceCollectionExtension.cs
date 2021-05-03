@@ -10,8 +10,8 @@ namespace Microsoft.Extensions.DependencyInjection
 	{
 		public static IServiceCollection AddMongoDbServices(this IServiceCollection services)
 		{
-			services.AddSingleton<IMongoRepository, CountryRepository>();
-            services.AddSingleton<IMongoRepository, CityRepository>();
+			services.AddSingleton<ICountryRepository, CountryRepository>();
+            services.AddSingleton<ICityRepository, CityRepository>();
             services.AddSingleton<IMongoConnector, MongoConnector>();
             return services;
 		}
