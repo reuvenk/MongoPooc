@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\src\\Learn\\Mongo\\MongoPocWebApplication1\\MongoPocWebApplication1.csproj": {}
+    "C:\\Users\\olegs\\Source\\Repos\\MongoPooc\\MongoPocWebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\src\\Learn\\Mongo\\MongoPocWebApplication1\\MongoPocWebApplication1.csproj": {
+    "C:\\Users\\olegs\\Source\\Repos\\MongoPooc\\MongoPocWebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\src\\Learn\\Mongo\\MongoPocWebApplication1\\MongoPocWebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\olegs\\Source\\Repos\\MongoPooc\\MongoPocWebApplication1.csproj",
         "projectName": "MongoPocWebApplication1",
-        "projectPath": "C:\\src\\Learn\\Mongo\\MongoPocWebApplication1\\MongoPocWebApplication1.csproj",
-        "packagesPath": "C:\\Users\\reuvenk\\.nuget\\packages\\",
-        "outputPath": "C:\\src\\Learn\\Mongo\\MongoPocWebApplication1\\obj\\",
+        "projectPath": "C:\\Users\\olegs\\Source\\Repos\\MongoPooc\\MongoPocWebApplication1.csproj",
+        "packagesPath": "C:\\Users\\olegs\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\olegs\\Source\\Repos\\MongoPooc\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\reuvenk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\olegs\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
