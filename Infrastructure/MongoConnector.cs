@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoPocWebApplication1.Domain.RepositoryInterfaces;
 
@@ -26,17 +27,15 @@ namespace MongoPocWebApplication1.Infrastructure
 
         private readonly ILogger<MongoConnector> logger;
 
-        public MongoConnector(IConfiguration configuration, ILogger<MongoConnector> logger)
+        public MongoConnector(ILogger<MongoConnector> logger, IOptions<MongoSettings> settings)
         {
             this.logger = logger;
             logger.LogInformation("-->MongoConnector");
-            var connectionString = BuildConnectionString(configuration);
-            logger.LogDebug($" Creating Mongo Client for connection string: {connectionString}");
-            Client = new MongoClient(connectionString);
+            logger.LogDebug($" Creating Mongo Client for connection string: {settings.Value.ConnectionString}");
+            Client = new MongoClient(settings.Value.ConnectionString);
 
-            var dbInstanceName = BuildInstanceName(configuration);
-            
-            UpdateDomainName(configuration);
+            DomainName = settings.Value.DomainName;
+            var dbInstanceName = $"{settings.Value.InstanceName}_{DomainName}";
 
             //used for POC testing!!!
             logger.LogInformation($" Drop old DB Instance {dbInstanceName}");
@@ -45,13 +44,6 @@ namespace MongoPocWebApplication1.Infrastructure
             logger.LogInformation($" Creating DB Instance {dbInstanceName}");
             this.Database = this.Client.GetDatabase(dbInstanceName);
             logger.LogInformation("<--MongoConnector");
-        }
-
-        private static string BuildConnectionString(IConfiguration configuration)
-        {
-            MongoCluster mongoCluster = configuration.GetSection(MongoCluster.SectionName).Get<MongoCluster>();
-            var dbConnectionString = $"mongodb://{mongoCluster.Host}:{mongoCluster.Port}?maxPoolSize={mongoCluster.MaxPoolSize}";
-            return dbConnectionString;
         }
 
         private string BuildInstanceName(IConfiguration configuration)

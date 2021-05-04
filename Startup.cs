@@ -27,6 +27,13 @@ namespace MongoPocWebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MongoSettings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("Mongo:ConnectionString").Value;
+                options.InstanceName = Configuration.GetSection("Mongo:InstanceName").Value;
+                options.DomainName = Configuration.GetSection("Mongo:DomainName").Value;
+            });
+
             //IConfiguration configuration,
             //IWebHostEnvironment environment
             services.AddMongoDbServices();
