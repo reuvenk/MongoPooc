@@ -12,7 +12,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
                 cm.AutoMap();
                 cm.SetIgnoreExtraElements(true);
                 cm.SetIsRootClass(true);
-                cm.GetMemberMap(c => c.Id).SetElementName("_id");
+                cm.MapIdMember(c => c.Id).SetElementName("_id");
                 cm.GetMemberMap(c => c.Name).SetElementName("name");
             });
         }
