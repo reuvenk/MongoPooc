@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MongoPocWebApplication1.Common;
-using MongoPocWebApplication1.Model;
-using MongoPocWebApplication1.Repository;
+using MongoPocWebApplication1.Domain.Models;
+using MongoPocWebApplication1.Domain.RepositoryInterfaces;
 
-namespace MongoPocWebApplication1.Controllers
+namespace MongoPocWebApplication1.ControllersPresentationAndApplication
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,9 +14,10 @@ namespace MongoPocWebApplication1.Controllers
         private readonly ICountryRepository countryRepository;
         private string CountryModelName { get; } = "Country";
 
-        public CountryController(ILogger<CountryController> logger, IEnumerable<IMongoRepository> mongoRepositories)
+        public CountryController(ILogger<CountryController> logger, ICountryRepository countryRepository)
         {
-            this.logger = logger; this.countryRepository = (ICountryRepository)mongoRepositories.SingleOrDefault(r=>r.ModelName.Equals(CountryModelName));
+            this.logger = logger; 
+            this.countryRepository = countryRepository;
         }
 
         [HttpGet("{id}")]

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MongoPocWebApplication1.Common;
-using MongoPocWebApplication1.Model;
-using MongoPocWebApplication1.Repository;
+using MongoPocWebApplication1.Domain.Models;
+using MongoPocWebApplication1.Domain.RepositoryInterfaces;
 
-namespace MongoPocWebApplication1.Controllers
+namespace MongoPocWebApplication1.ControllersPresentationAndApplication
 {
     [ApiController]
     [Route("[controller]")]
@@ -19,22 +15,22 @@ namespace MongoPocWebApplication1.Controllers
         private string CityModelName { get; } = "City";
 
 
-        public CityController(ILogger<CityController> logger, IEnumerable<IMongoRepository> mongoRepositories)
+        public CityController(ILogger<CityController> logger, ICityRepository cityRepository)
         {
             this.logger = logger;
-            this.cityRepository = (ICityRepository)mongoRepositories.SingleOrDefault(r => r.ModelName.Equals(CityModelName));
+            this.cityRepository = cityRepository;
         }
 
         [HttpGet("{name}")]
         public async Task<ActionResult<City>> Get(string name)
         {
-            return await cityRepository.FindByName(name);
+            return await cityRepository.GetByNameAsync(name);
         }
 
         [HttpPost]
         public async Task<ActionResult<City>> Post(City city)
         {
-            return await cityRepository.Insert(city);
+            return await cityRepository.AddAsync(city);
         }
     }
 }

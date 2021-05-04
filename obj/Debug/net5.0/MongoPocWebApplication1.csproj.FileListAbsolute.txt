@@ -1,4 +1,3 @@
-C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.csprojAssemblyReference.cache
 C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.GeneratedMSBuildEditorConfig.editorconfig
 C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.AssemblyInfoInputs.cache
 C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.AssemblyInfo.cs
@@ -39,3 +38,4 @@ C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplicati
 C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\ref\MongoPocWebApplication1.dll
 C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.pdb
 C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.genruntimeconfig.cache
+C:\src\Learn\Mongo\MongoPocWebApplication1\obj\Debug\net5.0\MongoPocWebApplication1.csprojAssemblyReference.cache

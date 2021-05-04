@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using MongoPocWebApplication1.Common;
+using MongoPocWebApplication1.Infrastructure;
 
 namespace MongoPocWebApplication1
 {
@@ -38,10 +38,8 @@ namespace MongoPocWebApplication1
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMongoConnector mongoConnector, IConfiguration configuration)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
         {
-            mongoConnector.Init(configuration);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

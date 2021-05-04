@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using MongoPocWebApplication1.Controllers;
+using MongoPocWebApplication1.Domain.RepositoryInterfaces;
 
-namespace MongoPocWebApplication1.Common
+namespace MongoPocWebApplication1.Infrastructure
 {
-    public class MongoConnector : IMongoConnector
+    public class MongoConnector
     {
         public MongoClient Client { get; }
         public IMongoDatabase Database { get; }
@@ -25,14 +24,11 @@ namespace MongoPocWebApplication1.Common
         //private static readonly string DevName = "reuvenk";
         //private static readonly string MsName = "mongo-poc";
 
-        private readonly IEnumerable<IMongoRepository> mongoRepositories;
-
         private readonly ILogger<MongoConnector> logger;
 
-        public MongoConnector(IEnumerable<IMongoRepository> mongoRepositories, IConfiguration configuration, ILogger<MongoConnector> logger)
+        public MongoConnector(IConfiguration configuration, ILogger<MongoConnector> logger)
         {
             this.logger = logger;
-            this.mongoRepositories = mongoRepositories;
             logger.LogInformation("-->MongoConnector");
             var connectionString = BuildConnectionString(configuration);
             logger.LogDebug($" Creating Mongo Client for connection string: {connectionString}");
@@ -49,14 +45,6 @@ namespace MongoPocWebApplication1.Common
             logger.LogInformation($" Creating DB Instance {dbInstanceName}");
             this.Database = this.Client.GetDatabase(dbInstanceName);
             logger.LogInformation("<--MongoConnector");
-        }
-
-        public void Init(IConfiguration configuration)
-        {
-            foreach (var repo in mongoRepositories)
-            {
-                repo.RegisterClassMapAndInit(this);
-            }
         }
 
         private static string BuildConnectionString(IConfiguration configuration)
