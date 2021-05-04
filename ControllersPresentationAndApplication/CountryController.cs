@@ -10,13 +10,11 @@ namespace MongoPocWebApplication1.ControllersPresentationAndApplication
     [Route("[controller]")]
     public class CountryController : ControllerBase
     {
-        private readonly ILogger<CountryController> logger;
         private readonly ICountryRepository countryRepository;
         private string CountryModelName { get; } = "Country";
 
-        public CountryController(ILogger<CountryController> logger, ICountryRepository countryRepository)
+        public CountryController(ICountryRepository countryRepository)
         {
-            this.logger = logger; 
             this.countryRepository = countryRepository;
         }
 

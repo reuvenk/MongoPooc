@@ -8,7 +8,7 @@ namespace MongoPocWebApplication1.Infrastructure
     public class MongoSettings
     {
         public string ConnectionString { get; set; }
-        public string InstanceName { get; set; }
-        public string DomainName { get; set; }
+        public string Database { get; set; }
+        public string CollectionPrefix { get; set; }
     }
 }

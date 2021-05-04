@@ -10,14 +10,12 @@ namespace MongoPocWebApplication1.ControllersPresentationAndApplication
     [Route("[controller]")]
     public class CityController : ControllerBase
     {
-        private readonly ILogger<CityController> logger;
         private readonly ICityRepository cityRepository;
         private string CityModelName { get; } = "City";
 
 
-        public CityController(ILogger<CityController> logger, ICityRepository cityRepository)
+        public CityController(ICityRepository cityRepository)
         {
-            this.logger = logger;
             this.cityRepository = cityRepository;
         }
 

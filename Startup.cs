@@ -30,8 +30,8 @@ namespace MongoPocWebApplication1
             services.Configure<MongoSettings>(options =>
             {
                 options.ConnectionString = Configuration.GetSection("Mongo:ConnectionString").Value;
-                options.InstanceName = Configuration.GetSection("Mongo:InstanceName").Value;
-                options.DomainName = Configuration.GetSection("Mongo:DomainName").Value;
+                options.Database = Configuration.GetSection("Mongo:Database").Value;
+                options.CollectionPrefix = Configuration.GetSection("Mongo:CollectionPrefix").Value;
             });
 
             //IConfiguration configuration,

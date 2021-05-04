@@ -3,7 +3,7 @@
 
 using MongoPocWebApplication1.Domain.RepositoryInterfaces;
 using MongoPocWebApplication1.Infrastructure;
-using MongoPocWebApplication1.Infrastructure.Repositories;
+using MongoPocWebApplication1.Infrastructure.Mongo.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
