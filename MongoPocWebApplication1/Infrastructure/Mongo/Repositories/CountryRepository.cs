@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
