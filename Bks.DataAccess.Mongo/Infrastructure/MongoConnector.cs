@@ -6,25 +6,26 @@ namespace Bks.DataAccess.Mongo.Infrastructure
 {
     public class MongoConnector
     {
-        public MongoClient Client { get; }
-        public IMongoDatabase Database { get; }
-        private string CollectionPrefix { get; set; }
+        private readonly string collectionPrefix;
+        private readonly IMongoDatabase database;
+
+        //TODO: consider using a private variable
+        private readonly MongoClient client;
 
         public MongoConnector(string connectionString, string collectionPrefix, string database)
         {
-            Client = new MongoClient(connectionString);
-
-            CollectionPrefix = collectionPrefix;
+            this.client = new MongoClient(connectionString);
+            this.collectionPrefix = collectionPrefix;
             
             //used for POC testing!!!
-            Client.DropDatabase(database);
+            client.DropDatabase(database);
 
-            this.Database = Client.GetDatabase(database);
+            this.database = client.GetDatabase(database);
         }
         
         public IMongoCollection<TDocument> GetCollection<TDocument>(string name)
         {
-            var mongoCollection = this.Database.GetCollection<TDocument>($"{CollectionPrefix}_{name}");
+            var mongoCollection = database.GetCollection<TDocument>($"{collectionPrefix}_{name}");
             return mongoCollection;
         }
     }

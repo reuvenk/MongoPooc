@@ -10,6 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtension
 	{
+        //TODO: Pass IConfiguration
 		public static IServiceCollection AddMongoDbServices(this IServiceCollection services, string connectionString, string collectionPrefix, string database)
         {
             services.AddSingleton<MongoConnector>(s=> new MongoConnector(connectionString, collectionPrefix, database));
