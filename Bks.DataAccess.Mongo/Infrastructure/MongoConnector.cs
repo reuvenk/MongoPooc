@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Core.Events;
 
 
 //Nuget: Bks.DataAccess.Mongo
@@ -17,9 +19,15 @@ namespace Bks.DataAccess.Mongo.Infrastructure
         {
             var config = settings.Value;
             this.collectionPrefix = config.CollectionPrefix;
-
             
-            var client = new MongoClient(config.ConnectionString);
+            var mongoConnectionUrl = new MongoUrl(config.ConnectionString);
+            var mongoClientSettings = MongoClientSettings.FromUrl(mongoConnectionUrl);
+            mongoClientSettings.ClusterConfigurator = cb => {
+                cb.Subscribe<CommandStartedEvent>(e => {
+                    logger.LogInformation($"{e.CommandName} - {e.Command.ToJson()}");
+                });
+            };
+            var client = new MongoClient(mongoClientSettings);
 
             //used for POC testing!!!
             client.DropDatabase(config.Database);

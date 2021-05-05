@@ -9,6 +9,9 @@ namespace MongoPocWebApplication1.Domain.Entities
         public int PopulationCount { get; set; }
         public string CountryId { get; set; }
 
+        public City()
+        {
+        }
 
         public City(Guid id, string name, int populationCount, string countryId)
         {
