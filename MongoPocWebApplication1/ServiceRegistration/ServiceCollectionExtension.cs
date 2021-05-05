@@ -2,7 +2,7 @@
 // ReSharper disable CheckNamespace
 
 using Bks.DataAccess.Mongo.Infrastructure;
-using MongoPocWebApplication1.Domain.RepositoryInterfaces;
+using MongoPocWebApplication1.Domain.Repositories;
 using MongoPocWebApplication1.Infrastructure;
 using MongoPocWebApplication1.Infrastructure.Mongo.Repositories;
 

@@ -1,4 +1,4 @@
-﻿namespace MongoPocWebApplication1.Domain.Models
+﻿namespace MongoPocWebApplication1.Domain.Entities
 {
     public class Country
     {
