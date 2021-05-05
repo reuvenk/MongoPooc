@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
-using MongoPocWebApplication1.Domain.Models;
+using MongoPocWebApplication1.Domain.Entities;
 
-namespace MongoPocWebApplication1.Domain.RepositoryInterfaces
+namespace MongoPocWebApplication1.Domain.Repositories
 {
-    public interface ICityRepository : IMongoRepository
+    public interface ICityRepository
     {
-        const string Name = "" ;
-        Task<City> AddAsync(City city);
+        Task AddAsync(City city);
         Task<City> GetByNameAsync(string name);
     }
 }

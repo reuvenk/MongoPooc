@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MongoPocWebApplication1.Domain.Models;
-using MongoPocWebApplication1.Domain.RepositoryInterfaces;
+using MongoPocWebApplication1.Domain.Entities;
+using MongoPocWebApplication1.Domain.Repositories;
 
 namespace MongoPocWebApplication1.ControllersPresentationAndApplication
 {
@@ -25,9 +26,10 @@ namespace MongoPocWebApplication1.ControllersPresentationAndApplication
         }
 
         [HttpPost]
-        public async Task<ActionResult<Country>> Post(Country country)
+        public async Task<ActionResult<string>> Post(Country country)
         {
-            return await countryRepository.AddAsync(country);
+            await countryRepository.AddAsync(country);
+            return country.Id;
         }
     }
 }

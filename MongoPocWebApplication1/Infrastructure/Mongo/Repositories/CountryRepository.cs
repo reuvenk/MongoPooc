@@ -4,34 +4,30 @@ using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using MongoPocWebApplication1.Domain.Models;
-using MongoPocWebApplication1.Domain.RepositoryInterfaces;
+using MongoPocWebApplication1.Domain.Entities;
+using MongoPocWebApplication1.Domain.Repositories;
 using MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 {
     public class CountryRepository : ICountryRepository
     {
-        private IMongoCollection<Country> CountryCollection { get; set; }
-        private MongoConnector MongoConnector { get; set; }
-        public string ModelName => "Country";
+        private const string  CountryCollectionName = "Country";
+        private IMongoCollection<Country> CountryCollection { get;}
 
         public CountryRepository(MongoConnector mongoConnector)
         {
-            MongoConnector = mongoConnector;
-
             CountryMap.ConfigureClassMap();
 
-            CountryCollection = MongoConnector.GetCollection<Country>(ModelName.ToLower());
+            CountryCollection = mongoConnector.GetCollection<Country>(CountryCollectionName);
         }
 
-        public async Task<Country> AddAsync(Country country)
+        public async Task AddAsync(Country country)
         {
             await CountryCollection.InsertOneAsync(country);
-            return country;
         }
 
-        public async Task<Country> GetByIdAsync(String id)
+        public async Task<Country> GetByIdAsync(string id)
         {
             var filter = Builders<Country>
                 .Filter

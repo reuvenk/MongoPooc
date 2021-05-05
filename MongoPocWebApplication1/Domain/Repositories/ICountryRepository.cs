@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MongoPocWebApplication1.Domain.Models;
+using MongoPocWebApplication1.Domain.Entities;
 
-namespace MongoPocWebApplication1.Domain.RepositoryInterfaces
+namespace MongoPocWebApplication1.Domain.Repositories
 {
-    public interface ICountryRepository : IMongoRepository
+    public interface ICountryRepository
     {
-        Task<Country> AddAsync(Country country);
-        Task<Country> GetByIdAsync(String id);
+        Task AddAsync(Country country);
+        Task<Country> GetByIdAsync(string id);
     }
 }

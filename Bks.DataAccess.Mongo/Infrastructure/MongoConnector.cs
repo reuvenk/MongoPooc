@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 
 
 //Nuget: Bks.DataAccess.Mongo
@@ -6,25 +8,28 @@ namespace Bks.DataAccess.Mongo.Infrastructure
 {
     public class MongoConnector
     {
-        public MongoClient Client { get; }
-        public IMongoDatabase Database { get; }
-        private string CollectionPrefix { get; set; }
+        private readonly string collectionPrefix;
+        private readonly IMongoDatabase database;
 
-        public MongoConnector(string connectionString, string collectionPrefix, string database)
+        public MongoConnector(
+            IOptions<MongoSettings> settings,
+            ILogger<MongoConnector> logger)
         {
-            Client = new MongoClient(connectionString);
+            var config = settings.Value;
+            this.collectionPrefix = config.CollectionPrefix;
 
-            CollectionPrefix = collectionPrefix;
             
-            //used for POC testing!!!
-            Client.DropDatabase(database);
+            var client = new MongoClient(config.ConnectionString);
 
-            this.Database = Client.GetDatabase(database);
+            //used for POC testing!!!
+            client.DropDatabase(config.Database);
+
+            this.database = client.GetDatabase(config.Database);
         }
         
         public IMongoCollection<TDocument> GetCollection<TDocument>(string name)
         {
-            var mongoCollection = this.Database.GetCollection<TDocument>($"{CollectionPrefix}_{name}");
+            var mongoCollection = database.GetCollection<TDocument>($"{collectionPrefix}_{name}");
             return mongoCollection;
         }
     }
