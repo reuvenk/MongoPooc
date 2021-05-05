@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,11 +30,9 @@ namespace MongoPocWebApplication1
         {
             //IConfiguration configuration,
             //IWebHostEnvironment environment
-            services.AddMongoDbServices(
-                Configuration.GetSection("Mongo:ConnectionString").Value,
-                Configuration.GetSection("Mongo:Database").Value,
-                Configuration.GetSection("Mongo:CollectionPrefix").Value
-                );
+            
+
+            services.AddMongoDbServices(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
