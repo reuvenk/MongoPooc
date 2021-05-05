@@ -14,6 +14,7 @@ namespace Bks.DataAccess.Mongo.Infrastructure
 
         public MongoConnector(string connectionString, string collectionPrefix, string database)
         {
+
             this.client = new MongoClient(connectionString);
             this.collectionPrefix = collectionPrefix;
             
