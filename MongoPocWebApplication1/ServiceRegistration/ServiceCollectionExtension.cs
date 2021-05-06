@@ -11,7 +11,6 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtension
 	{
-        //TODO: Pass IConfiguration
 		public static IServiceCollection AddMongoDbServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<MongoSettings>(options =>

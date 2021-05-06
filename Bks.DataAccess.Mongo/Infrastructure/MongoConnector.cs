@@ -24,13 +24,13 @@ namespace Bks.DataAccess.Mongo.Infrastructure
             var mongoClientSettings = MongoClientSettings.FromUrl(mongoConnectionUrl);
             mongoClientSettings.ClusterConfigurator = cb => {
                 cb.Subscribe<CommandStartedEvent>(e => {
-                    logger.LogInformation($"{e.CommandName} - {e.Command.ToJson()}");
+                    logger.LogDebug($"{e.CommandName} - {e.Command.ToJson()}");
                 });
             };
             var client = new MongoClient(mongoClientSettings);
 
             //used for POC testing!!!
-            client.DropDatabase(config.Database);
+            //client.DropDatabase(config.Database);
 
             this.database = client.GetDatabase(config.Database);
         }

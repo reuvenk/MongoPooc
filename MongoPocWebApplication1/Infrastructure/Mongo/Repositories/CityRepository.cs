@@ -12,7 +12,8 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 {
     public class CityRepository : ICityRepository
     {
-        private const string CityCollectionName = "city";
+        // Defines mapping for collection name - how the current model (City) would be named inside mongo as a collection
+        private const string CollectionName = "city";
 
         private readonly IMongoCollection<City> cityCollection;
 
@@ -25,7 +26,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 
             ConfigureClassMaps();
 
-            cityCollection = mongoConnector.GetCollection<City>(CityCollectionName);
+            cityCollection = mongoConnector.GetCollection<City>(CollectionName);
         }
 
         private static void ConfigureClassMaps()

@@ -12,14 +12,15 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 {
     public class CountryRepository : ICountryRepository
     {
-        private const string  CountryCollectionName = "Country";
+        // Defines mapping for collection name - how the current model (Country) would be named inside mongo as a collection
+        private const string  CollectionName = "Country";
         private IMongoCollection<Country> CountryCollection { get;}
 
         public CountryRepository(MongoConnector mongoConnector)
         {
             CountryMap.ConfigureClassMap();
 
-            CountryCollection = mongoConnector.GetCollection<Country>(CountryCollectionName);
+            CountryCollection = mongoConnector.GetCollection<Country>(CollectionName);
         }
 
         public async Task AddAsync(Country country)

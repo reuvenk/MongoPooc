@@ -9,11 +9,18 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
         {
             BsonClassMap.RegisterClassMap<Country>(cm =>
             {
-                cm.AutoMap();
-                cm.SetIgnoreExtraElements(true);
+                //Working Without AutoMap example
+                // as explained in https://mongodb.github.io/mongo-csharp-driver/2.12/reference/bson/mapping/
+                // cm.AutoMap();
+                // cm.SetIgnoreExtraElements(true);
                 cm.SetIsRootClass(true);
                 cm.MapIdMember(c => c.Id).SetElementName("_id");
-                cm.GetMemberMap(c => c.Name).SetElementName("name");
+                //When working With AutoMap: Use MapMember(..).SetElementName(..)
+                //Without AutoMap: Use GetMemberMap(..).SetElementName(..) 
+                cm.MapMember(c => c.Name).SetElementName("name");
+                //CatchAll Used to encapsulate all none mapped members that exists in db
+                cm.MapExtraElementsMember(c => c.CatchAll);
+                //cm.GetMemberMap(c => c.Name).SetElementName("name");
             });
         }
     }
