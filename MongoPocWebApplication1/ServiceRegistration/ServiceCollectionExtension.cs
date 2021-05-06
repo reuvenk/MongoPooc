@@ -5,6 +5,7 @@ using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using MongoPocWebApplication1.Domain.Repositories;
 using MongoPocWebApplication1.Infrastructure;
+using MongoPocWebApplication1.Infrastructure.Mongo;
 using MongoPocWebApplication1.Infrastructure.Mongo.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -20,6 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.CollectionPrefix = configuration.GetSection("Mongo:CollectionPrefix").Value;
             });
 
+            services.AddMongoConnector<LocationMongoConnector>(options => options.SetConfiguratuions);
             services.AddSingleton<MongoConnector>();
 
             services.AddScoped<ICountryRepository, CountryRepository>();

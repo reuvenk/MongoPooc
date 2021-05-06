@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoPocWebApplication1", "MongoPocWebApplication1\MongoPocWebApplication1.csproj", "{C4198440-2AF6-430A-AEF9-65F822C4B1CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bks.DataAccess.Mongo", "Bks.DataAccess.Mongo\Bks.DataAccess.Mongo.csproj", "{8240700D-3581-4316-BC2A-487E0CCD060E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bks.DataAccess.Mongo", "Bks.DataAccess.Mongo\Bks.DataAccess.Mongo.csproj", "{8240700D-3581-4316-BC2A-487E0CCD060E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bks.DataAccess.Mongo.AspNetCore", "Bks.DataAccess.Mongo.AspNetCore\Bks.DataAccess.Mongo.AspNetCore.csproj", "{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8240700D-3581-4316-BC2A-487E0CCD060E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8240700D-3581-4316-BC2A-487E0CCD060E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8240700D-3581-4316-BC2A-487E0CCD060E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

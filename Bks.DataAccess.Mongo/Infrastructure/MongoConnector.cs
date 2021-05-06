@@ -8,12 +8,12 @@ using MongoDB.Driver.Core.Events;
 //Nuget: Bks.DataAccess.Mongo
 namespace Bks.DataAccess.Mongo.Infrastructure
 {
-    public class MongoConnector
+    public abstract class MongoConnector
     {
         private readonly string collectionPrefix;
         private readonly IMongoDatabase database;
 
-        public MongoConnector(
+        protected MongoConnector(
             IOptions<MongoSettings> settings,
             ILogger<MongoConnector> logger)
         {

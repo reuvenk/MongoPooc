@@ -16,13 +16,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
         private const string  CollectionName = "Country";
         private IMongoCollection<Country> CountryCollection { get;}
 
-        //Make sure to ConfigureClassMap only once using a static init
-        static CountryRepository()
-        {
-            CountryMap.ConfigureClassMap();
-        }
-
-        public CountryRepository(MongoConnector mongoConnector)
+        public CountryRepository(LocationMongoConnector mongoConnector)
         {
             CountryCollection = mongoConnector.GetCollection<Country>(CollectionName);
         }
