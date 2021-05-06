@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization;
+﻿using Bks.DataAccess.Mongo.Infrastructure;
+using MongoDB.Bson.Serialization;
 using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations

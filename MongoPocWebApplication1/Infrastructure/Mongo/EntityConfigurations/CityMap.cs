@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization;
+﻿using Bks.DataAccess.Mongo.Infrastructure;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoPocWebApplication1.Domain.Entities;
 

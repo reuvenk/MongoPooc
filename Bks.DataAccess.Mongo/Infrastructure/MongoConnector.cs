@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Events;
-using MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations;
 
 
 //Nuget: Bks.DataAccess.Mongo

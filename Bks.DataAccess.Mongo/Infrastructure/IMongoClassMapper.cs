@@ -1,4 +1,4 @@
-﻿namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
+﻿namespace Bks.DataAccess.Mongo.Infrastructure
 {
     public interface IMongoClassMapper
     {
