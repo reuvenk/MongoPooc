@@ -1,6 +1,7 @@
 
 // ReSharper disable CheckNamespace
 
+using Bks.DataAccess.Mongo.AspNetCore;
 using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using MongoPocWebApplication1.Domain.Repositories;
@@ -21,8 +22,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.CollectionPrefix = configuration.GetSection("Mongo:CollectionPrefix").Value;
             });
 
-            services.AddMongoConnector<LocationMongoConnector>(options => options.SetConfiguratuions);
-            services.AddSingleton<MongoConnector>();
+            services.AddMongoConnector<LocationMongoConnector>();//options => options.services);
+            //services.AddSingleton<MongoConnector>();
 
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<ICityRepository, CityRepository>();

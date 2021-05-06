@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -9,14 +10,18 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo
     public class LocationMongoConnector : MongoConnector
     {
         public LocationMongoConnector(IOptions<MongoSettings> settings, ILogger<MongoConnector> logger)
-            : base(settings, logger, new List<CityMap.ConfigureClassMap()>())
+            : base(settings, logger, GetClassMaps())
         {
-            RegisterClassMaps();
         }
 
-        private static void RegisterClassMaps()
+        private static IReadOnlyCollection<IMongoClassMapper> GetClassMaps()
         {
-            CityMap.ConfigureClassMap();
+            var classMaps = new List<IMongoClassMapper>()
+            {
+                new CityMap(),
+                new CountryMap()
+            };
+            return classMaps;
         }
     }
 }

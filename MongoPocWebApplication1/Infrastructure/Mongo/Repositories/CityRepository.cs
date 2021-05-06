@@ -17,12 +17,12 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 
         private readonly IMongoCollection<City> cityCollection;
 
-        static CityRepository() 
-        {
-            CityMap.ConfigureClassMap();
-        }
+        //static CityRepository() 
+        //{
+        //    CityMap.ConfigureClassMap();
+        //}
 
-        public CityRepository(MongoConnector mongoConnector)
+        public CityRepository(LocationMongoConnector mongoConnector)
         {
             if (mongoConnector == null)
             {

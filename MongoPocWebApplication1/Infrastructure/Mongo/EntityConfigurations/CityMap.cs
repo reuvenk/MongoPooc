@@ -4,11 +4,11 @@ using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
 {
-    public class CityMap : BsonClassMap
+    public class CityMap : IMongoClassMapper
     {
-        public static BsonClassMap ConfigureClassMap()
+        public void Execute()
         {
-            return BsonClassMap.RegisterClassMap<City>(cm =>
+            BsonClassMap.RegisterClassMap<City>(cm =>
             {
                 cm.AutoMap();
                 cm.SetIgnoreExtraElements(true);
@@ -20,7 +20,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
                 cm.GetMemberMap(c => c.Name).SetElementName("name");
                 cm.GetMemberMap(c => c.PopulationCount).SetElementName("population");
                 cm.GetMemberMap(c => c.CountryId).SetElementName("countryId");
-            });
+            }); ;
         }
     }
 }

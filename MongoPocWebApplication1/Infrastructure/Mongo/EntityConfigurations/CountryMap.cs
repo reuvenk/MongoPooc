@@ -3,9 +3,9 @@ using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
 {
-    public class CountryMap
+    public class CountryMap : IMongoClassMapper
     {
-        public static void ConfigureClassMap()
+        public void Execute()
         {
             BsonClassMap.RegisterClassMap<Country>(cm =>
             {

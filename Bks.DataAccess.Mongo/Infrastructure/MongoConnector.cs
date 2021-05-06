@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Events;
+using MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations;
 
 
 //Nuget: Bks.DataAccess.Mongo
@@ -12,10 +14,11 @@ namespace Bks.DataAccess.Mongo.Infrastructure
     {
         private readonly string collectionPrefix;
         private readonly IMongoDatabase database;
-
+        
         protected MongoConnector(
             IOptions<MongoSettings> settings,
-            ILogger<MongoConnector> logger)
+            ILogger<MongoConnector> logger,
+            IReadOnlyCollection<IMongoClassMapper> classMaps)
         {
             var config = settings.Value;
             this.collectionPrefix = config.CollectionPrefix;
@@ -41,6 +44,12 @@ namespace Bks.DataAccess.Mongo.Infrastructure
             return mongoCollection;
         }
 
-        public 
+        protected static void RegisterClassMaps(IReadOnlyCollection<IMongoClassMapper> classMaps)
+        {
+            foreach (var map  in classMaps)
+            {
+                map.Execute();
+            }
+        }
     }
 }
