@@ -40,5 +40,7 @@ namespace Bks.DataAccess.Mongo.Infrastructure
             var mongoCollection = database.GetCollection<TDocument>($"{collectionPrefix}_{name}");
             return mongoCollection;
         }
+
+        public 
     }
 }

@@ -4,11 +4,11 @@ using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
 {
-    public class CityMap
+    public class CityMap : BsonClassMap
     {
-        public static void ConfigureClassMap()
+        public static BsonClassMap ConfigureClassMap()
         {
-            BsonClassMap.RegisterClassMap<City>(cm =>
+            return BsonClassMap.RegisterClassMap<City>(cm =>
             {
                 cm.AutoMap();
                 cm.SetIgnoreExtraElements(true);
