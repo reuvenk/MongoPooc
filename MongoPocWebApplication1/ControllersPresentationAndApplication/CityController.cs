@@ -11,9 +11,7 @@ namespace MongoPocWebApplication1.ControllersPresentationAndApplication
     public class CityController : ControllerBase
     {
         private readonly ICityRepository cityRepository;
-        private string CityModelName { get; } = "City";
-
-
+        
         public CityController(ICityRepository cityRepository)
         {
             this.cityRepository = cityRepository;

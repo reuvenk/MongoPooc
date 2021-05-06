@@ -10,8 +10,7 @@ namespace MongoPocWebApplication1.ControllersPresentationAndApplication
     public class CountryController : ControllerBase
     {
         private readonly ICountryRepository countryRepository;
-        private string CountryModelName { get; } = "Country";
-
+        
         public CountryController(ICountryRepository countryRepository)
         {
             this.countryRepository = countryRepository;

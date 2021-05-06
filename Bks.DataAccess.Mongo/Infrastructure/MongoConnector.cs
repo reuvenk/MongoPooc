@@ -41,7 +41,7 @@ namespace Bks.DataAccess.Mongo.Infrastructure
             return mongoCollection;
         }
 
-        protected static void RegisterClassMaps(IReadOnlyCollection<IMongoClassMapper> classMaps)
+        private static void RegisterClassMaps(IReadOnlyCollection<IMongoClassMapper> classMaps)
         {
             foreach (var map in classMaps) map.Map();
         }
