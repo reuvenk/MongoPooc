@@ -22,8 +22,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddSingleton<MongoConnector>();
 
-            services.AddSingleton<ICountryRepository, CountryRepository>();
-            services.AddSingleton<ICityRepository, CityRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
             return services;
 		}
 

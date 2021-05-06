@@ -17,6 +17,11 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 
         private readonly IMongoCollection<City> cityCollection;
 
+        static CityRepository() 
+        {
+            CityMap.ConfigureClassMap();
+        }
+
         public CityRepository(MongoConnector mongoConnector)
         {
             if (mongoConnector == null)
@@ -24,16 +29,9 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
                 throw new ArgumentNullException(nameof(mongoConnector));
             }
 
-            ConfigureClassMaps();
-
             cityCollection = mongoConnector.GetCollection<City>(CollectionName);
         }
-
-        private static void ConfigureClassMaps()
-        {
-            CityMap.ConfigureClassMap();
-        }
-
+        
         public async Task AddAsync(City city)
         {
             await cityCollection.InsertOneAsync(city);
