@@ -17,7 +17,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo
         {
             var classMaps = new List<IMongoClassMapper>()
             {
-                new CityMap(),
+                new CityClassMapper(),
                 new CountryMap()
             };
             return classMaps;

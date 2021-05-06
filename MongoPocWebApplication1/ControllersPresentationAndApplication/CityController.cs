@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MongoPocWebApplication1.Domain.Entities;
 using MongoPocWebApplication1.Domain.Repositories;
 

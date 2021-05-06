@@ -1,5 +1,4 @@
-﻿using System;
-using Bks.DataAccess.Mongo.Infrastructure;
+﻿using Bks.DataAccess.Mongo.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bks.DataAccess.Mongo.AspNetCore

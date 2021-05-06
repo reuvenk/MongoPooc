@@ -1,12 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using Bks.DataAccess.Mongo.Infrastructure;
-using Microsoft.Extensions.Logging;
-using MongoDB.Bson.Serialization;
+﻿using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoPocWebApplication1.Domain.Entities;
 using MongoPocWebApplication1.Domain.Repositories;
-using MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 {
@@ -14,6 +9,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
     {
         // Defines mapping for collection name - how the current model (Country) would be named inside mongo as a collection
         private const string  CollectionName = "Country";
+
         private IMongoCollection<Country> CountryCollection { get;}
 
         public CountryRepository(LocationMongoConnector mongoConnector)

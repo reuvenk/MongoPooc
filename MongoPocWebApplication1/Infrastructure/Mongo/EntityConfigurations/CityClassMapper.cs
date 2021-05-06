@@ -5,7 +5,7 @@ using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
 {
-    public class CityMap : IMongoClassMapper
+    public class CityClassMapper : IMongoClassMapper
     {
         public void Execute()
         {

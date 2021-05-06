@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Domain.Repositories

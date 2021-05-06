@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Bks.DataAccess.Mongo.Infrastructure;
-using Microsoft.Extensions.Logging;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using MongoPocWebApplication1.Domain.Entities;
 using MongoPocWebApplication1.Domain.Repositories;
-using MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations;
 
 namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
 {
@@ -16,11 +12,6 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
         private const string CollectionName = "city";
 
         private readonly IMongoCollection<City> cityCollection;
-
-        //static CityRepository() 
-        //{
-        //    CityMap.ConfigureClassMap();
-        //}
 
         public CityRepository(LocationMongoConnector mongoConnector)
         {
