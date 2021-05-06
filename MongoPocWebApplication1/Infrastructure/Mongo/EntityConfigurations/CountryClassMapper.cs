@@ -6,7 +6,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
 {
     public class CountryMap : IMongoClassMapper
     {
-        public void Execute()
+        public void Map()
         {
             BsonClassMap.RegisterClassMap<Country>(cm =>
             {

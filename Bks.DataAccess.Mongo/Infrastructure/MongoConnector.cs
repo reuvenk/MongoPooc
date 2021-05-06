@@ -31,6 +31,8 @@ namespace Bks.DataAccess.Mongo.Infrastructure
             client.DropDatabase(config.Database);
 
             this.database = client.GetDatabase(config.Database);
+
+            RegisterClassMaps(classMaps);
         }
 
         public IMongoCollection<TDocument> GetCollection<TDocument>(string name)
@@ -41,10 +43,7 @@ namespace Bks.DataAccess.Mongo.Infrastructure
 
         protected static void RegisterClassMaps(IReadOnlyCollection<IMongoClassMapper> classMaps)
         {
-            foreach (var map  in classMaps)
-            {
-                map.Execute();
-            }
+            foreach (var map in classMaps) map.Map();
         }
 
         private static MongoClientSettings BuildSettings(ILogger<MongoConnector> logger, MongoSettings config)

@@ -7,7 +7,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
 {
     public class CityClassMapper : IMongoClassMapper
     {
-        public void Execute()
+        public void Map()
         {
             BsonClassMap.RegisterClassMap<City>(cm =>
             {
@@ -21,7 +21,7 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations
                 cm.GetMemberMap(c => c.Name).SetElementName("name");
                 cm.GetMemberMap(c => c.PopulationCount).SetElementName("population");
                 cm.GetMemberMap(c => c.CountryId).SetElementName("countryId");
-            }); ;
+            });
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IMongoClassMapper
     {
-        void Execute();
+        void Map();
     }
 }
