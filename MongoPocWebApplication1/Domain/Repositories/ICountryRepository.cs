@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MongoDB.Driver;
 using MongoPocWebApplication1.Domain.Entities;
 
 namespace MongoPocWebApplication1.Domain.Repositories
@@ -7,5 +8,6 @@ namespace MongoPocWebApplication1.Domain.Repositories
     {
         Task AddAsync(Country country);
         Task<Country> GetByIdAsync(string id);
+        Task<UpdateResult> UpdateAsync(Country country);
     }
 }

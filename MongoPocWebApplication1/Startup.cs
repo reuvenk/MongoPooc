@@ -20,8 +20,9 @@ namespace MongoPocWebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMongoDbServices(Configuration);
-            services.AddControllers();
+            services.AddMongoDbServices(Configuration)
+                .AddControllers()
+                .AddNewtonsoftJson(); // to support patch JSON parsing
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoPocWebApplication1", Version = "v1" });

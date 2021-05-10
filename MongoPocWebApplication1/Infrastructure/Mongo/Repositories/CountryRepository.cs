@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoPocWebApplication1.Domain.Entities;
 using MongoPocWebApplication1.Domain.Repositories;
@@ -33,6 +36,19 @@ namespace MongoPocWebApplication1.Infrastructure.Mongo.Repositories
                 .FirstOrDefaultAsync();
 
             return result;
+        }
+        
+
+        public async Task<UpdateResult> UpdateAsync(Country country)
+        {
+
+            var filter = Builders<Country>.Filter.Where(c => c.Id == country.Id);
+
+            var update = Builders<Country>.Update.Set("name", country.Name);
+                
+            return await CountryCollection.UpdateOneAsync(
+                filter,
+                update);
         }
     }
 }
