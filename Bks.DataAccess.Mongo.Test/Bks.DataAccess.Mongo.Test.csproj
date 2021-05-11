@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FakeItEasy" Version="7.0.2" />
+	  <PackageReference Include="FakeItEasy" Version="7.0.2" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
@@ -21,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bks.DataAccess.Mongo\Bks.DataAccess.Mongo.csproj" />
-    <ProjectReference Include="..\MongoPocWebApplication1\MongoPocWebApplication1.csproj" />
   </ItemGroup>
 
 </Project>
