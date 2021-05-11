@@ -1,13 +1,14 @@
 using Bks.DataAccess.Mongo;
 using FakeItEasy;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoPocWebApplication1.ControllersPresentationAndApplication;
 using MongoPocWebApplication1.Domain.Entities;
 using MongoPocWebApplication1.Domain.Repositories;
-using Xunit;
 
 namespace MogoPocTest
 {
+    [TestClass]
     public class CountryControllerUnitTest
     {
         private readonly ICountryRepository countryRepositoryMock = A.Fake<ICountryRepository>();
@@ -17,15 +18,15 @@ namespace MogoPocTest
         {
 
         }
-        [Fact]
-        public void Post_Created_Country_In_Repo()
+        [TestMethod]
+        public async void Post_Country_ShouldInvokeAddAsyncOnRepo()
         {
             //Arrange 
             // A.CallTo(() => countryRepo.AddAsync(null)).Returns()
             var countryController = new CountryController(countryRepositoryMock);
             //Act
             var country = new Country("1", "Israel");
-            countryController.Post(country);
+            await countryController.Post(country);
             //Assert
             A.CallTo(countryRepositoryMock.AddAsync(country)).MustHaveHappened();
         }

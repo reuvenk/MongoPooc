@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using FakeItEasy;
+using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Driver;
-using Xunit;
 
 namespace Bks.DataAccess.Mongo.Test
 {
+    [TestClass]
     public class MongoConnectorTest
     {
         private const string DbName = "MY_DB_NAME";
@@ -22,18 +24,18 @@ namespace Bks.DataAccess.Mongo.Test
 
         private static IOptions<MongoSettings> CreateMongoSettingsOptions()
         {
-            MongoSettings mongoSettings = new MongoSettings()
+            var mongoSettings = new MongoSettings()
             {
                 ConnectionString = "mongodb://localhost:27017?maxPoolSize=5",
                 Database = DbName,
                 CollectionPrefix = DbPrefix
             };
-            IOptions<MongoSettings> mongoSettingsOptions = Options.Create(mongoSettings);
+            var mongoSettingsOptions = Options.Create(mongoSettings);
             return mongoSettingsOptions;
         }
 
-        [Fact]
-        public void TestRegisterClassMap()
+        [TestMethod]
+        public void RegisterClassMaps_with3Mappers_allMappersAreUsed()
         {
             var mapperA = A.Fake<IMongoClassMapper>();
             var mapperB = A.Fake<IMongoClassMapper>();
@@ -49,17 +51,19 @@ namespace Bks.DataAccess.Mongo.Test
             A.CallTo(() => mapperC.Map()).MustHaveHappened();
         }
 
-        [Fact]
-        public void TestGetCollection()
+        [TestMethod]
+        public void GetCollection_withPrefix_ShouldReturnAnInstanceAccordingToNamingConventions()
         {
             var options = CreateMongoSettingsOptions();
             var mockMongo = A.Fake<MongoConnector>(
                 x => x.WithArgumentsForConstructor(
                     new object[] {options, mockLogger, classMaps }));
             
+
             var mongoCollection = mockMongo.GetCollection<Object>(DbCollectionName);
-            Assert.NotNull(mongoCollection);
-            Assert.Equal(mongoCollection.CollectionNamespace.ToString(),$"{DbName}.{DbPrefix}_{DbCollectionName}");
+            mongoCollection.CollectionNamespace.ToString()
+                .Should()
+                .BeEquivalentTo($"{DbName}.{DbPrefix}_{DbCollectionName}");
         }
     }
 }

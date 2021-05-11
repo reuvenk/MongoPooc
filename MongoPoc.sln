@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bks.DataAccess.Mongo", "Bks
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MogoPocTest", "MogoPocTest\MogoPocTest.csproj", "{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bks.DataAccess.Mongo.Test", "Bks.DataAccess.Mongo.Test\Bks.DataAccess.Mongo.Test.csproj", "{452CE085-E4AD-4FBD-86A8-8FA650C181BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bks.DataAccess.Mongo.Test", "Bks.DataAccess.Mongo.Test\Bks.DataAccess.Mongo.Test.csproj", "{452CE085-E4AD-4FBD-86A8-8FA650C181BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
