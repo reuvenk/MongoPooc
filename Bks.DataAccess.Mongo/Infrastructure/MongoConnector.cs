@@ -28,7 +28,7 @@ namespace Bks.DataAccess.Mongo.Infrastructure
             var client = new MongoClient(clientSettings);
 
             //used for POC testing!!!
-            client.DropDatabase(config.Database);
+            // client.DropDatabase(config.Database);
 
             this.database = client.GetDatabase(config.Database);
 
