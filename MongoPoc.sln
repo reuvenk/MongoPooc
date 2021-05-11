@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoPocWebApplication1", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bks.DataAccess.Mongo", "Bks.DataAccess.Mongo\Bks.DataAccess.Mongo.csproj", "{8240700D-3581-4316-BC2A-487E0CCD060E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bks.DataAccess.Mongo.AspNetCore", "Bks.DataAccess.Mongo.AspNetCore\Bks.DataAccess.Mongo.AspNetCore.csproj", "{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MogoPocTest", "MogoPocTest\MogoPocTest.csproj", "{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MogoPocTest", "MogoPocTest\MogoPocTest.csproj", "{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bks.DataAccess.Mongo.Test", "Bks.DataAccess.Mongo.Test\Bks.DataAccess.Mongo.Test.csproj", "{452CE085-E4AD-4FBD-86A8-8FA650C181BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{8240700D-3581-4316-BC2A-487E0CCD060E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8240700D-3581-4316-BC2A-487E0CCD060E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8240700D-3581-4316-BC2A-487E0CCD060E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65BE6E42-FFB8-4C23-ABFF-6BDEC9FB0662}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EE18B0E-C209-4A3C-ACD3-A5D05B0A25AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452CE085-E4AD-4FBD-86A8-8FA650C181BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452CE085-E4AD-4FBD-86A8-8FA650C181BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452CE085-E4AD-4FBD-86A8-8FA650C181BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452CE085-E4AD-4FBD-86A8-8FA650C181BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

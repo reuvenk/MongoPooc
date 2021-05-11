@@ -11,8 +11,8 @@ namespace MogoPocTest
         [Fact]
         public async Task CreateCountry()
         {
-            using DbFixture db = new DbFixture();
-            var countryController = new CountryController(new CountryRepository(db.LocationMongoConnectorProp));
+            using LocationDbFixture locationDb = new LocationDbFixture();
+            var countryController = new CountryController(new CountryRepository(locationDb.LocationMongoConnectorProp));
             var country = new Country("1", "Israel");
 
             var result = await countryController.Post(country);

@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bks.DataAccess.Mongo.AspNetCore\Bks.DataAccess.Mongo.AspNetCore.csproj" />
     <ProjectReference Include="..\Bks.DataAccess.Mongo\Bks.DataAccess.Mongo.csproj" />
   </ItemGroup>
 

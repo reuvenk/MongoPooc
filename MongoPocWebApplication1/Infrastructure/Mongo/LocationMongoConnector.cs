@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Bks.DataAccess.Mongo.Infrastructure;
+using Bks.DataAccess.Mongo;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MongoPocWebApplication1.Infrastructure.Mongo.EntityConfigurations;

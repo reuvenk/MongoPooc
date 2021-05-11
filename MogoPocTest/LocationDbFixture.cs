@@ -1,5 +1,5 @@
 ﻿using System;
-using Bks.DataAccess.Mongo.Infrastructure;
+using Bks.DataAccess.Mongo;
 using FakeItEasy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -9,14 +9,14 @@ using MongoPocWebApplication1.Infrastructure.Mongo;
 
 namespace MogoPocTest
 {
-    public class DbFixture : IDisposable
+    public class LocationDbFixture : IDisposable
     {
         private readonly ILogger<MongoConnector> mockLogger = A.Fake<ILogger<MongoConnector>>();
         private MongoSettings MongoSettings { get; }
 
         public LocationMongoConnector LocationMongoConnectorProp { get;}
 
-        public DbFixture()
+        public LocationDbFixture()
         {
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")

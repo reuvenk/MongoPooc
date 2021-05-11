@@ -1,4 +1,4 @@
-﻿namespace Bks.DataAccess.Mongo.Infrastructure
+﻿namespace Bks.DataAccess.Mongo
 {
     public class MongoSettings
     {

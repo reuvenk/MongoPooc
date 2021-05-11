@@ -7,8 +7,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
 using MongoDB.Driver.Core.Events;
 
-
-namespace Bks.DataAccess.Mongo.Infrastructure
+namespace Bks.DataAccess.Mongo
 {
     public abstract class MongoConnector
     {
