@@ -17,15 +17,12 @@ namespace Bks.DataAccess.Mongo.Test
         private const string DbCollectionName = "MY_COLLECTION_NAME";
 
         private ILogger<MongoConnector> mockLogger;
-        
-        private IReadOnlyCollection<IMongoClassMapper> classMaps;
         private IOptions<MongoSettings> options;
 
         [TestInitialize]
         public void Init()
         {
             mockLogger = A.Fake<ILogger<MongoConnector>>();
-            classMaps = A.Fake<IReadOnlyCollection<IMongoClassMapper>>();
             options = CreateMongoSettingsOptions();
         }
 
@@ -49,7 +46,7 @@ namespace Bks.DataAccess.Mongo.Test
             var mapperC = A.Fake<IMongoClassMapper>();
             var mockedClassMaps = new List<IMongoClassMapper>(){ mapperA , mapperB, mapperC };
 
-            var mockMongo = A.Fake<MongoConnector>(
+            A.Fake<MongoConnector>(
                 x => x.WithArgumentsForConstructor(
                     new object[] { options, mockLogger, mockedClassMaps }));
             A.CallTo(() => mapperA.Map()).MustHaveHappened();
@@ -60,6 +57,7 @@ namespace Bks.DataAccess.Mongo.Test
         [TestMethod]
         public void GetCollection()
         {
+            var classMaps = A.Fake<IReadOnlyCollection<IMongoClassMapper>>();
             var mockMongo = A.Fake<MongoConnector>(
                 x => x.WithArgumentsForConstructor(
                     new object[] {options, mockLogger, classMaps }));
