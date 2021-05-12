@@ -11,16 +11,23 @@ namespace Bks.DataAccess.Mongo.Test
 {
     [TestClass]
     public class MongoConnectorTest
-    {
+    { 
         private const string DbName = "MY_DB_NAME";
         private const string DbPrefix = "MY_DB_PREFIX";
         private const string DbCollectionName = "MY_COLLECTION_NAME";
 
-        private readonly ILogger<MongoConnector> mockLogger = 
-            A.Fake<ILogger<MongoConnector>>();
+        private ILogger<MongoConnector> mockLogger;
         
-        private readonly IReadOnlyCollection<IMongoClassMapper> classMaps =
-            A.Fake<IReadOnlyCollection<IMongoClassMapper>>();
+        private IReadOnlyCollection<IMongoClassMapper> classMaps;
+        private IOptions<MongoSettings> options;
+
+        [TestInitialize]
+        public void Init()
+        {
+            mockLogger = A.Fake<ILogger<MongoConnector>>();
+            classMaps = A.Fake<IReadOnlyCollection<IMongoClassMapper>>();
+            options = CreateMongoSettingsOptions();
+        }
 
         private static IOptions<MongoSettings> CreateMongoSettingsOptions()
         {
@@ -35,14 +42,13 @@ namespace Bks.DataAccess.Mongo.Test
         }
 
         [TestMethod]
-        public void RegisterClassMaps_with3Mappers_allMappersAreUsed()
+        public void Register_Class_Maps() // RegisterClassMaps_with3Mappers_allMappersAreUsed()
         {
             var mapperA = A.Fake<IMongoClassMapper>();
             var mapperB = A.Fake<IMongoClassMapper>();
             var mapperC = A.Fake<IMongoClassMapper>();
-            IReadOnlyCollection<IMongoClassMapper> mockedClassMaps = new List<IMongoClassMapper>(){ mapperA , mapperB, mapperC };
+            var mockedClassMaps = new List<IMongoClassMapper>(){ mapperA , mapperB, mapperC };
 
-            var options = CreateMongoSettingsOptions();
             var mockMongo = A.Fake<MongoConnector>(
                 x => x.WithArgumentsForConstructor(
                     new object[] { options, mockLogger, mockedClassMaps }));
@@ -52,15 +58,13 @@ namespace Bks.DataAccess.Mongo.Test
         }
 
         [TestMethod]
-        public void GetCollection_withPrefix_ShouldReturnAnInstanceAccordingToNamingConventions()
+        public void GetCollection()
         {
-            var options = CreateMongoSettingsOptions();
             var mockMongo = A.Fake<MongoConnector>(
                 x => x.WithArgumentsForConstructor(
                     new object[] {options, mockLogger, classMaps }));
             
-
-            var mongoCollection = mockMongo.GetCollection<Object>(DbCollectionName);
+            var mongoCollection = mockMongo.GetCollection<object>(DbCollectionName);
             mongoCollection.CollectionNamespace.ToString()
                 .Should()
                 .BeEquivalentTo($"{DbName}.{DbPrefix}_{DbCollectionName}");
