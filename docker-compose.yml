@@ -9,4 +9,4 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
       MONGO_INITDB_ROOT_DATABASE: sample_db
     ports:
-        - 27017:27017  
+        - 27018:27017  
