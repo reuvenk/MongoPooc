@@ -55,7 +55,12 @@ namespace MongoPoc.Specs.Hooks
         [UsedImplicitly]
         public void AfterScenario()
         {
-            iocContainer.Teardown();
+            //iocContainer.Teardown();
+            var applicationModules = iocContainer.ResolveAll<IDynamicApplicationModule>();
+            foreach (var applicationModule in applicationModules)
+            {
+                applicationModule.Stop();
+            }
         }
 
         [AfterTestRun]

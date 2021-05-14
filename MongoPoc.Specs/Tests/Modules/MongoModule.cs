@@ -1,4 +1,6 @@
-﻿using Attest.Testing.Contracts;
+﻿using System;
+using System.Threading.Tasks;
+using Attest.Testing.Contracts;
 using JetBrains.Annotations;
 using MongoDB.Driver;
 
@@ -9,7 +11,7 @@ namespace MongoPoc.Specs.Tests.Modules
     {
         private readonly IProcessManagementService processManagementService;
         private readonly IApplicationPathInfo mongoApplicationPathInfo;
-
+        private const string DockerImageName = "mongodb-integration-tests-sample";
         public MongoModule(IProcessManagementService processManagementService)
         {
             this.processManagementService = processManagementService;
@@ -29,9 +31,13 @@ namespace MongoPoc.Specs.Tests.Modules
 
         public void Stop(int handle)
         {
-            processManagementService.Start("docker",
-                $"stop mongodb-integration-tests-sample");
-
+            var stopProcessId = processManagementService.Start(
+                "docker",
+                $"stop {DockerImageName}");
+            //wait for docker stop to finish
+            Task.Delay(TimeSpan.FromSeconds(2)).Wait();
+            //close open windows
+            processManagementService.Stop(stopProcessId);
             processManagementService.Stop(handle);
         }
     }
