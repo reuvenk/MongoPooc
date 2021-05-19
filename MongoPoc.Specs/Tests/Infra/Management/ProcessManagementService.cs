@@ -3,7 +3,7 @@ using Attest.Testing.Management;
 using JetBrains.Annotations;
 using Polly;
 
-namespace Bks.Grading.Specs.Tests.Infra.Management
+namespace MongoPoc.Specs.Tests.Infra.Management
 {
     //TODO: Put to Common
     [UsedImplicitly]

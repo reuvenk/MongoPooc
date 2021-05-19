@@ -38,7 +38,10 @@ namespace MongoPoc.Specs.Tests.Modules
         {
             dbInstanceName = $"test_db_{Guid.NewGuid()}";
             webServerProcessId = processManagementService.Start("dotnet",
-                $"run Mongo:ConnectionString={ConnectionString} Mongo:Database={dbInstanceName} {applicationPathInfo.Executable} --launch-profile MongoPocWebApplication1");
+                $"run " +
+                $"Mongo:ConnectionString={ConnectionString} " +
+                $"Mongo:Database={dbInstanceName} {applicationPathInfo.Executable} " +
+                $"--launch-profile MongoPocWebApplication1");
         }
     }
 }

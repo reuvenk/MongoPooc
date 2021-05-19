@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 
-namespace Bks.Grading.Specs.Tests.Infra.Context
+namespace MongoPoc.Specs.Tests.Infra.Context
 {
     [UsedImplicitly]
     internal sealed class Module : ICompositionModule<IDependencyRegistrator>
